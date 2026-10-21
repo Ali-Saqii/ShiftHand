@@ -1,0 +1,16 @@
+# Documentation
+Docs/
+shifthand/Docs
+
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+project.xcworkspace/xcuserdata/
+xcuserdata/
+
+# Swift Package Manager
+.build/
