@@ -1,0 +1,5 @@
+// Debug.xcconfig
+// ShiftHand Local Development Environment
+
+API_BASE_URL = http:/$()/localhost:3000/api/v1
+PUBLIC_BASE_URL = http:/$()/localhost:3000

@@ -2,60 +2,41 @@
 //  ContentView.swift
 //  shifthand
 //
-//  Created by Mac mini on 21/10/2026.
+//  Initial root placeholder conforming to ShiftHand Design Tokens.
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
-        }
-    }
+        ZStack {
+            Color.shBackgroundPrimary
+                .ignoresSafeArea()
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
+            VStack(spacing: SHMetrics.spacingMD) {
+                Image(systemName: "hand.raised.fill")
+                    .font(.system(size: 48))
+                    .foregroundStyle(Color.shPrimaryTeal)
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+                Text("ShiftHand")
+                    .font(.largeTitle.bold())
+                    .foregroundStyle(Color.shTextPrimary)
+
+                Text("Volunteer Shift Manager")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.shTextSecondary)
             }
+            .padding()
         }
     }
 }
 
-#Preview {
+#Preview("Light Mode") {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .preferredColorScheme(.light)
+}
+
+#Preview("Dark Mode") {
+    ContentView()
+        .preferredColorScheme(.dark)
 }

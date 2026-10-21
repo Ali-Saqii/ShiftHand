@@ -1,0 +1,5 @@
+// Release.xcconfig
+// ShiftHand Production Environment
+
+API_BASE_URL = https:/$()/api.shifthand.org/api/v1
+PUBLIC_BASE_URL = https:/$()/shifthand.org

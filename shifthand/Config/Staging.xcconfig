@@ -1,0 +1,5 @@
+// Staging.xcconfig
+// ShiftHand Staging Environment
+
+API_BASE_URL = https:/$()/staging-api.shifthand.org/api/v1
+PUBLIC_BASE_URL = https:/$()/staging.shifthand.org
